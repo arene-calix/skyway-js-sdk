@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SkyWay - P2P Media example</title>
-    <link rel="stylesheet" href="../_shared/style.css">
+    <!-- <link rel="stylesheet" href="../_shared/style.css"> -->
   </head>
   <body>
     <div class="container">
@@ -23,11 +23,23 @@
           <button id="js-call-trigger">Call</button>
           <button id="js-close-trigger">Close</button>
         </div>
+        <div class="toggle-mute">
+          <button id="js-toggle-camera">Toggle Camera</button>
+          <span id="camera-status"></span>
+          <br>
+          <!-- <button id="js-toggle-speaker">Microphone->ON</button>
+          <span id="speaker-status"></span>
+          <br> -->
+          <button id="js-toggle-microphone">Toggle Microphone</button>
+          <span id="microphone-status"></span>
+          <br>
+        </div>
       </div>
       <p class="meta" id="js-meta"></p>
     </div>
     <script src="//cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
-    <script src="../_shared/key.js"></script>
+    <!-- <script src="//cdn.webrtc.ecl.ntt.com/skyway-1.4.0.js"></script> -->
+    <!-- <script src="../_shared/key.js"></script> -->
     <script src="./script.js"></script>
   </body>
 </html>
