@@ -30,7 +30,6 @@ window.__SKYWAY_KEY__ = 'b93e6be4-9b4b-4e1f-bf9e-5b6347b358f0';
   localVideo.muted = true; // 自分の音声を自分のスピーカーから聞こえなくする。相手には届く。
   localVideo.playsInline = true;
   localVideo.autoplay = true;
-  // await localVideo.play().catch(console.error);
 
   const peer = (window.peer = new Peer({
     key: window.__SKYWAY_KEY__,
@@ -88,52 +87,24 @@ window.__SKYWAY_KEY__ = 'b93e6be4-9b4b-4e1f-bf9e-5b6347b358f0';
   // Mute
   const toggleCamera = document.getElementById('js-toggle-camera');
   const toggleMicrophone = document.getElementById('js-toggle-microphone');
-  // const toggleSpeaker = document.getElementById('js-toggle-speaker');
   const cameraStatus = document.getElementById('camera-status');
   const microphoneStatus = document.getElementById('microphone-status');
-  // const speakerStatus = document.getElementById('speaker-status');
   cameraStatus.textContent = 'カメラON';
   microphoneStatus.textContent = 'マイクON';
-  // speakerStatus.textContent = 'スピーカーON';
 
   toggleCamera.addEventListener('click', () => {
     console.log('toggleCamera');
-    // for (const track of localStream.getVideoTracks()) {
-    //   window.alert(`変更前の状態\n${track.enabled}, ${track.id}, ${track.kind}, ${track.label}, ${track.muted}`);
-    // }
     const videoTracks = localStream.getVideoTracks()[0];
     videoTracks.enabled = !videoTracks.enabled;
     cameraStatus.textContent = `カメラ${videoTracks.enabled ? 'ON' : 'OFF'}`;
-
-    // const videoTracks = localStream.getVideoTracks();
-    // for (const track of videoTracks) {
-    //   if (track) {
-    //     track.enabled = !track.enabled;
-    //   }
-    //   cameraStatus.textContent = `カメラ${track.enabled ? 'ON' : 'OFF'}`;
-    // }
   });
 
   toggleMicrophone.addEventListener('click', () => {
     console.log('toggleMicrophone');
-    // for (const track of localStream.getAudioTracks()) {
-    //   window.alert(`変更前の状態\n${track.enabled}, ${track.id}, ${track.kind}, ${track.label}, ${track.muted}`);
-    // }
     const audioTracks = localStream.getAudioTracks()[0];
     audioTracks.enabled = !audioTracks.enabled;
     microphoneStatus.textContent = `マイク${
       audioTracks.enabled ? 'ON' : 'OFF'
     }`;
   });
-
-  // toggleSpeaker.addEventListener('click', () => {
-  //   console.log('toggleSpeaker');
-  //   const audioTracks = remoteStream.getAudioTracks();
-  //   for (const track of audioTracks) {
-  //     if (track) {
-  //       track.enabled = !track.enabled;
-  //     }
-  //     speakerStatus.textContent = `スピーカー${track.enabled ? 'ON' : 'OFF'}`;
-  //   }
-  // });
 })();
