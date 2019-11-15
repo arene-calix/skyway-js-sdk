@@ -50,6 +50,14 @@ window.__SKYWAY_KEY__ = 'b93e6be4-9b4b-4e1f-bf9e-5b6347b358f0';
       // Render remote stream for caller
       remoteVideo.srcObject = stream;
       remoteVideo.playsInline = true;
+      //@@ iPhoneでremoteStream.getVideoTracks()がとれない場合がある現象の確認: START
+      console.log(`remoteStream.getTracks()↓`);
+      console.dir(stream.getTracks());
+      console.log(`remoteStream.getVideoTracks()↓`);
+      console.dir(stream.getVideoTracks());
+      console.log(`remoteStream.getVideoTracks()[0]↓`);
+      console.dir(stream.getVideoTracks()[0]);
+      //@@ iPhoneでremoteStream.getVideoTracks()がとれない場合がある現象の確認: END
       await remoteVideo.play().catch(console.error);
     });
 
