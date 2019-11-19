@@ -102,9 +102,19 @@ window.__SKYWAY_KEY__ = 'b93e6be4-9b4b-4e1f-bf9e-5b6347b358f0';
   toggleMicrophone.addEventListener('click', () => {
     console.log('toggleMicrophone');
     const audioTracks = localStream.getAudioTracks()[0];
+    console.log(`BEFORE: enabled(${audioTracks.enabled}), readyState(${audioTracks.readyState})`);
+    console.dir(audioTracks);
     audioTracks.enabled = !audioTracks.enabled;
     microphoneStatus.textContent = `マイク${
       audioTracks.enabled ? 'ON' : 'OFF'
     }`;
+    audioTracks.onended = (e) => {
+      console.log("=== audioTrack ended! ======================");
+    };
+    setTimeout(() => {
+        const audioTracks = localStream.getAudioTracks()[0];
+        console.log(`AFTER: enabled(${audioTracks.enabled}), readyState(${audioTracks.readyState})`);
+        console.dir(audioTracks);
+    }, 100);
   });
 })();
